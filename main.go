@@ -25,7 +25,7 @@ func main() {
 		panic(err)
 	}
 
-	// Writing cooldown
+	// Write cooldown
 	cooldownTime := time.Millisecond * time.Duration(rowsCount/columnsCount)
 
 	w := color.New()
