@@ -14,20 +14,23 @@ func main() {
 		panic("args for matrix sizes are not provided")
 	}
 
-	rowLen, err0 := strconv.Atoi(os.Args[1])
+	// Getting matrix configuration
+	rowsCount, err0 := strconv.Atoi(os.Args[1])
 	columnsCount, err1 := strconv.Atoi(os.Args[2])
 	if err0 != nil || err1 != nil {
 		panic(err0)
 	}
 
-	cooldownTime := time.Millisecond * time.Duration(rowLen/columnsCount)
+	// Writing cooldown
+	cooldownTime := time.Millisecond * time.Duration(rowsCount/columnsCount)
 
 	w := color.New()
 	w.SetWriter(os.Stdin)
 	w.Add(color.FgHiGreen)
 
+	// Creating a random matrix
 	matrix := [][]int{}
-	for range rowLen {
+	for range rowsCount {
 		row := []int{}
 		for range columnsCount {
 			row = append(row, randomNum(0, 1))
@@ -35,6 +38,7 @@ func main() {
 		matrix = append(matrix, row)
 	}
 
+	// Writing this matrix
 	for _, row := range matrix {
 		for _, col := range row {
 			w.Printf("%d ", col)
@@ -44,6 +48,7 @@ func main() {
 	}
 }
 
+// Generates random number from min to max(inclusive)
 func randomNum(min, max int) int {
 	if max < min {
 		return 0
