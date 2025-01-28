@@ -15,10 +15,14 @@ func main() {
 	}
 
 	// Getting matrix configuration
-	rowsCount, err0 := strconv.Atoi(os.Args[1])
-	columnsCount, err1 := strconv.Atoi(os.Args[2])
-	if err0 != nil || err1 != nil {
-		panic(err0)
+	rowsCount, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		panic(err)
+	}
+
+	columnsCount, err := strconv.Atoi(os.Args[2])
+	if err != nil {
+		panic(err)
 	}
 
 	// Writing cooldown
